@@ -1,9 +1,8 @@
 services:
   polen-rest:
-    image: python:3.11-slim
+    build:
+      context: .
+    image: polen-rest:latest
     container_name: polen-rest
-    volumes:
-      - ./library:/scripts
     network_mode: host
-    command: bash -c "pip install requests && python3 /scripts/polen_olivo.py"
     restart: always

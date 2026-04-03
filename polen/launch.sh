@@ -1,1 +1,1 @@
-docker compose -f ~/<your_path>/polen/docker-compose-rest.yml up -d
+docker compose -f ~/domotizacion/polen/docker-compose-rest.yml up -d

@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY library/polen_olivo.py .
+
+RUN pip install --no-cache-dir requests
+
+CMD ["python", "polen_olivo.py"]
