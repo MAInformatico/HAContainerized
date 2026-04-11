@@ -1,0 +1,8 @@
+services:
+  calima-rest:
+    build:
+      context: .
+    image: calima-rest:latest
+    container_name: calima-rest
+    network_mode: host
+    restart: always
