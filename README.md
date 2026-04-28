@@ -1,40 +1,93 @@
-# HAContainerized
+# 🚀 HAContainerized – Home Automation & Environmental Monitoring System
+## 📌 Overview
 
-A fully containerized home automation setup for **Home Assistant** on a Raspberry Pi (tested on Raspberry Pi 4 Model B), designed to demonstrate practical backend and DevOps skills.
+HAContainerized is a fully containerized home automation and environmental monitoring system built around Home Assistant, designed to run efficiently on a Raspberry Pi (tested on Raspberry Pi 4 Model B).
 
-## Project Overview
+The project combines IoT data ingestion, backend microservices, and containerized deployment, demonstrating practical skills in backend development and DevOps workflows.
 
-This repository includes:
+## 🎯 Project Goals
+- Deploy a reproducible Home Assistant environment using Docker
+- Integrate external environmental data into home automation workflows
+- Build a lightweight Python microservice exposing real-time data via REST API
+- Enable modular, containerized architecture suitable for edge devices
+- Demonstrate backend + DevOps integration in a real-world scenario
 
-1. **Home Assistant Docker setup**  
-   - Automates home devices and sensors  
-   - Runs in a self-contained Docker container for easy deployment  
+## 🏗️ System Architecture
 
-2. **Python REST microservice for pollen data**  
-   - Scrapes pollen levels from the [UGR website](https://polen.redugr.es/provincias/granada/)  
-   - Exposes real-time data in JSON format for Home Assistant integration  
-   - Built with Python, `http.server`, `requests`, and `re`  
+The system is composed of two main containerized components:
 
-3. **Docker Compose orchestration**  
-   - Runs both Home Assistant and the pollen microservice in isolated containers  
-   - Automatic restart and local network access configured  
-   - Enables reproducible, portable deployment
+### 🧠 Home Assistant Core
+Central automation engine responsible for:
+- Manages devices, sensors, and automation rules
+- Consumes external APIs (pollen data service)
+- Triggers events based on configured conditions
 
-## Key Skills Demonstrated
+### 🌿 Pollen Data Microservice (Python REST API)
+- External data ingestion service
+- Scrapes real-time pollen levels from external source
+- Exposes structured JSON API endpoint
+- Built with Python, http.server, requests, regex
+ 
+## 🔄 Data Flow
+1. External website provides raw pollen data  
+2. Python microservice scrapes and transforms raw data into structured JSON format
+3. Home Assistant consumes API endpoint on a scheduled interval  
+4. Automation engine evaluates conditions  
+5. Alerts or actions are triggered based on thresholds  
 
-- Backend development: Python, REST APIs, data scraping, JSON handling  
-- DevOps: Docker, Docker Compose, containerized deployments  
-- Version control: Git/GitHub workflow  
-- IoT/Home automation: Home Assistant integration  
+## 🐳 Docker Architecture
 
-## How to Use
+The system follows a lightweight microservice-based architecture optimized for edge deployment:
 
-1. Clone the repository:  
-   ```bash
+- Home Assistant runs in an isolated container
+- Python microservice runs as an independent API container
+- Both services communicate over a shared Docker network
+- Automatic restart policies ensure system resilience
+- Fully reproducible deployment across environments
+
+## 🧰 Tech Stack
+
+### Backend & APIs
+- Python (custom lightweight REST API using HTTP server)
+- Web scraping (requests, regex parsing)
+
+### Infrastructure
+- Docker / Docker Compose
+- Raspberry Pi (ARM deployment)
+
+### Automation
+- Home Assistant (event-driven automation engine)
+
+### Version Control:
+- Git / GitHub
+
+## 🌍 Key Features
+- Containerized IoT backend system with REST API integration
+- Real-time environmental monitoring and data integration (pollen levels)
+- Modular Docker-based architecture designed for edge deployment
+- Edge deployment on Raspberry Pi
+- Automation-driven event system
+
+## 💡 What I Learned
+- Designing containerized IoT backend systems
+- Building and exposing lightweight REST APIs
+- Integrating external data sources into automation workflows
+- Designing event-driven systems with Home Assistant
+- Deploying distributed systems using Docker Compose in constrained environments
+
+## 📌 Possible Improvements
+- Introduce time-series storage (InfluxDB) for historical analytics
+- Add Grafana dashboards for system observability
+- Expand sensor ingestion (CO₂, temperature, humidity)
+- Replace scraping layer with official API integration
+- Migrate API layer to FastAPI for better scalability
+
+## 🚀 How to Run
    git clone git@github.com:MAInformatico/HAContainerized.git
    cd HAContainerized
-(Do not forget to check the comments using < > on the source files)   
+   docker-compose up -d
 
-Using this reference as Source: https://www.manelrodero.com/blog/instalacion-de-home-assistant-en-docker
+## 📚 Reference
 
-
+   Based on Home Assistant Docker deployment principles:
+   https://www.manelrodero.com/blog/instalacion-de-home-assistant-en-docker
