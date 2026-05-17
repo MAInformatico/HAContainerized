@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY library/polen_olivo.py .
 
-RUN pip install --no-cache-dir requests
+RUN pip install --no-cache-dir requests beautifulsoup4
 
 CMD ["python", "polen_olivo.py"]
+
